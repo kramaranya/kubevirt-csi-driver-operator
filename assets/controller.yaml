@@ -66,6 +66,7 @@ spec:
             requests:
               memory: 50Mi
               cpu: 10m
+          terminationMessagePolicy: FallbackToLogsOnError
         - name: csi-provisioner
           image: ${PROVISIONER_IMAGE}
           args:
@@ -78,6 +79,7 @@ spec:
           volumeMounts:
             - name: socket-dir
               mountPath: /var/lib/csi/sockets/pluginproxy/
+          terminationMessagePolicy: FallbackToLogsOnError
         - name: csi-attacher
           image: ${ATTACHER_IMAGE}
           args:
@@ -93,6 +95,7 @@ spec:
             requests:
               memory: 50Mi
               cpu: 10m
+          terminationMessagePolicy: FallbackToLogsOnError
         - name: csi-liveness-probe
           image: ${LIVENESS_PROBE_IMAGE}
           args:
@@ -106,6 +109,7 @@ spec:
             requests:
               memory: 50Mi
               cpu: 10m
+          terminationMessagePolicy: FallbackToLogsOnError
       volumes:
         - name: socket-dir
           emptyDir: {}
