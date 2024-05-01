@@ -74,6 +74,7 @@ spec:
             requests:
               memory: 50Mi
               cpu: 10m
+          terminationMessagePolicy: FallbackToLogsOnError
         - name: csi-node-driver-registrar
           image: ${NODE_DRIVER_REGISTRAR_IMAGE}
           args:
@@ -98,6 +99,7 @@ spec:
             requests:
               memory: 20Mi
               cpu: 5m
+          terminationMessagePolicy: FallbackToLogsOnError
         - name: csi-liveness-probe
           image: ${LIVENESS_PROBE_IMAGE}
           args:
@@ -111,6 +113,7 @@ spec:
             requests:
               memory: 20Mi
               cpu: 5m
+          terminationMessagePolicy: FallbackToLogsOnError
       volumes:
         - name: infracluster
           secret:
